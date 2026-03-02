@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Who Considers, Who Owns? — Fitz & Saunders 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#060b06;--ph:#00ff41;--dim:#00ee3a;--dmr:#00b830;--dmt:#005a18;--amb:#ffc400;--wht:#eaf5ea;--red:#ff4444;--blu:#44aaff;--max:780px}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--wht);font-family:'IBM Plex Mono','Courier New',monospace;line-height:1.7;overflow-x:hidden}
+@keyframes flicker{0%,93%,100%{opacity:1}94%{opacity:.96}95.5%{opacity:1}96%{opacity:.97}}
+body{animation:flicker 10s infinite}
+#crt{position:fixed;inset:0;z-index:9000;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0,transparent 3px,rgba(0,0,0,.1) 3px,rgba(0,0,0,.1) 4px)}
+#vig{position:fixed;inset:0;z-index:8999;pointer-events:none;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,.35) 100%)}
+#scroll-progress{position:fixed;top:0;left:0;right:0;height:4px;background:var(--ph);transform-origin:left;transform:scaleX(0);z-index:9001;transition:transform .1s}
+
+/* LAYOUT */
+.hero{padding:80px 20px 50px;background-image:radial-gradient(circle,rgba(0,255,65,.05) 1px,transparent 1px);background-size:32px 32px}
+.hero-inner,.section-inner,.footer-inner{max-width:var(--max);margin:0 auto;padding:0 20px}
+.section{padding:56px 0;border-top:1px solid var(--dmt)}
+.footer{padding:40px 0 60px;border-top:1px solid var(--dmt)}
+
+/* TYPE */
+.ey{font-size:clamp(12px,1.6vw,15px);color:var(--dim);letter-spacing:.15em;margin-bottom:8px}
+.h1{font-size:clamp(28px,5.5vw,52px);font-weight:700;line-height:1.05;margin-bottom:10px}
+.h2{font-size:clamp(18px,3vw,28px);font-weight:700;line-height:1.1;margin-bottom:12px}
+.body{font-size:clamp(13px,1.8vw,15px);font-weight:400;line-height:1.75;color:var(--wht)}
+.small{font-size:clamp(10px,1.2vw,12px);font-weight:300}
+.section-label{font-size:11px;color:var(--dmr);letter-spacing:.15em;margin-bottom:6px}
+.g{color:var(--ph)}.a{color:var(--amb)}.r{color:var(--red)}.dr{color:var(--dim)}.bl{color:var(--blu)}.it{font-style:italic}
+a{color:var(--ph);text-decoration:none}a:hover{text-decoration:underline}
+
+/* TABLE */
+.rt{border-collapse:collapse;width:100%}
+.rt td{padding:5px 10px;border:1px solid var(--dmt);font-size:clamp(11px,1.7vw,13px);vertical-align:top;background:#000;line-height:1.5}
+.rt td:first-child{color:var(--dim);white-space:nowrap;font-weight:700;width:1%;padding-right:12px}
+.rt td:last-child{color:var(--wht);font-weight:300}
+.rt a{color:var(--wht)}.rt a:hover{color:var(--ph)}
+
+/* DIVIDERS */
+hr.rule{border:none;height:1px;background:var(--dmt);margin:16px 0}
+hr.rule.g{background:var(--ph)}hr.rule.a{background:var(--amb)}hr.rule.r{background:var(--red)}
+
+/* CALLOUTS */
+.explainer{background:rgba(0,255,65,.04);border-left:3px solid var(--ph);padding:16px 20px;margin:24px 0;font-size:clamp(12px,1.7vw,14px);line-height:1.85;color:var(--wht)}
+.explainer.amber{background:rgba(255,196,0,.04);border-left-color:var(--amb)}
+.pullquote{margin:28px 0;padding:22px 26px;border:1px solid var(--dmt);text-align:center}
+.pullquote .pq-text{font-size:clamp(15px,2.4vw,20px);font-weight:700;line-height:1.4;margin-bottom:6px}
+.pullquote .pq-sub{font-size:clamp(11px,1.4vw,13px);color:var(--dim);font-weight:300}
+.transition{margin:20px 0;padding:12px 0;font-size:clamp(11px,1.5vw,13px);color:var(--dmr);letter-spacing:.05em;border-top:1px dashed var(--dmt);border-bottom:1px dashed var(--dmt)}
+
+/* CHARTS */
+.g3{display:grid;grid-template-columns:repeat(3,1fr)}
+.g3 .col{padding:12px;border-right:1px solid var(--dmt);border-top:1px solid var(--dmt)}
+.g3 .col:first-child{border-left:1px solid var(--dmt)}
+@media(max-width:500px){.g3{grid-template-columns:1fr}.g3 .col{border-right:1px solid var(--dmt)}}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:500px){.g2{grid-template-columns:1fr}}
+.lbl{font-size:clamp(11px,1.4vw,14px);font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.lbl.r{color:#ff4444!important}.lbl.a{color:#ffc400!important}.lbl.g{color:#00ff41!important}.lbl.dr{color:var(--dim)!important}
+.br{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.bt{flex:1;height:13px;background:var(--dmt);position:relative}
+.bf{position:absolute;left:0;top:0;bottom:0;height:100%}
+.bv{font-size:12px;color:#eaf5ea!important;min-width:30px;text-align:right}
+.bl2{font-size:11px;color:var(--dmr);margin-bottom:3px;letter-spacing:.04em}
+.sr2{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.st2{flex:1;height:13px;display:flex;overflow:hidden}
+.ss{height:100%}
+.sv{font-size:12px;color:#eaf5ea!important;min-width:70px}
+.stb{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.stb.two{grid-template-columns:repeat(2,1fr)}
+@media(max-width:420px){.stb,.stb.two{grid-template-columns:1fr}}
+.sb{border:1px solid var(--dmr);padding:14px 10px;text-align:center}
+.sn{font-size:clamp(22px,5vw,42px);font-weight:700;line-height:1}
+.sl{font-size:clamp(9px,1.5vw,11px);margin-top:4px}
+
+/* FINDING BLOCK */
+.finding-block{padding:32px 24px;border:1px solid var(--dmt);margin:20px 0;text-align:center;background:rgba(0,255,65,.02)}
+.finding-block .f1{font-size:clamp(17px,2.8vw,26px);font-weight:700;margin-bottom:12px;line-height:1.3}
+.finding-block .f2{font-size:clamp(13px,2vw,18px);font-weight:400;color:var(--wht)}
+.finding-block .f3{font-size:clamp(11px,1.5vw,13px);color:var(--dim);margin-top:8px;font-style:italic}
+
+/* GAUGE STATIC — mirrors site exactly */
+.gauge-section{margin:20px 0}
+.gauge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(max-width:480px){.gauge-grid{grid-template-columns:1fr}}
+.gauge-col{border:1px solid var(--dmt);padding:10px 8px}
+.gauge-col-lbl{font-size:clamp(10px,1.3vw,12px);font-weight:700;letter-spacing:.08em;text-align:center;margin-bottom:8px}
+.gauge-bar-wrap{position:relative;height:160px;margin-bottom:6px}
+.gauge-fill{position:absolute;bottom:0;left:0;right:0;transition:height .6s}
+.gauge-baseline{position:absolute;left:0;right:0;border-top:2px dashed rgba(255,255,255,.75);pointer-events:none}
+.gauge-baseline-lbl{position:absolute;right:3px;font-size:9px;color:rgba(255,255,255,.75);letter-spacing:.04em;white-space:nowrap;top:-14px;font-family:inherit}
+.gauge-arrow{font-size:14px;text-align:center;line-height:1;margin-bottom:2px;min-height:16px}
+.gauge-chg{font-size:10px;text-align:center;letter-spacing:.06em;min-height:14px}
+
+/* VAR CARD */
+.var-card{border:1px solid var(--dmt);padding:14px;margin-bottom:12px}
+.var-title{font-size:clamp(12px,1.6vw,14px);font-weight:700;letter-spacing:.06em;margin-bottom:6px;color:var(--ph)}
+.var-title.amber{color:var(--amb)}
+.var-desc{font-size:clamp(11px,1.5vw,13px);color:var(--dim);margin-bottom:10px;line-height:1.6}
+
+/* IMPLICATIONS */
+.impl-item{border:1px solid var(--dmt);padding:14px;margin-bottom:6px}
+.impl-title{font-size:clamp(12px,1.5vw,13px);font-weight:700;letter-spacing:.06em;margin-bottom:8px;color:var(--ph)}
+.impl-title.amber{color:var(--amb)}
+.impl-body{font-size:clamp(12px,1.5vw,14px);font-weight:400;line-height:1.7;color:var(--wht)}
+
+/* PILLS */
+.pills{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.pill{background:rgba(0,255,65,.07);border:1px solid var(--dmt);color:var(--dim);font-size:10px;padding:2px 6px;letter-spacing:.05em}
+</style>
+</head>
+<body>
+<div id="crt"></div>
+<div id="vig"></div>
+<div id="scroll-progress"></div>
+
+<!-- HERO -->
+<div class="hero">
+<div class="hero-inner">
+  <div class="ey">// NEW RESEARCH · FITZ & SAUNDERS 2026 //</div>
+  <div class="h1"><span class="a">WHO CONSIDERS,</span><br><span class="g">WHO OWNS?</span></div>
+  <p class="body" style="margin-bottom:18px">MULTI-STUDY EVIDENCE ON THE BEHAVIORAL PROCESS OF CRYPTOCURRENCY ADOPTION IN THE UNITED STATES</p>
+  <table class="rt" style="background:#000">
+    <tr><td>AUTHORS</td><td>ERIN FITZ &amp; KYLE SAUNDERS // COLORADO STATE UNIVERSITY</td></tr>
+    <tr><td>JOURNAL</td><td>JOURNAL OF RETAILING AND CONSUMER SERVICES · FEB 2026</td></tr>
+    <tr><td>METRICS</td><td>#100 IN GOOGLE SCHOLAR (OVERALL) · #2 IN MARKETING · #3 IN BUSINESS, ECONOMICS, AND MANAGEMENT · #3 IN STRATEGIC MANAGEMENT</td></tr>
+    <tr><td>DOI</td><td><a href="https://doi.org/10.1016/j.jretconser.2026.104759" target="_blank">10.1016/j.jretconser.2026.104759 ↗</a></td></tr>
+  </table>
+</div>
+</div>
+
+<!-- 1: THE PROBLEM -->
+<div class="section">
+<div class="section-inner">
+  <div class="section-label">// THE PROBLEM //</div>
+  <div class="h2">CRYPTO RESEARCH HAS A BLIND SPOT</div>
+  <p class="body">Most research on cryptocurrency adoption asks one question: does someone <span class="g">own</span> crypto or not? That framing misses something important. Among non-owners, there's a real difference between people who <span class="r">would never consider it</span> and people who <span class="a">would consider owning but haven't yet</span>.</p>
+
+  <div class="explainer">
+    That second group — the <span class="a">considerers</span> — is invisible in most studies. If they behave differently from both <span class="r">rejectors</span> and <span class="g">owners</span>, then lumping them together distorts everything: who we think is open to crypto, what predicts adoption, and what messages or policies might actually move the needle.
+  </div>
+
+  <p class="body">We draw on the <strong>Theory of Planned Behavior</strong>, which holds that people form intentions before acting. Considering a behavior and actually doing it are distinct stages — and the factors that move someone from rejection to consideration may be completely different from what moves them from consideration to ownership.</p>
+
+  <div class="transition">OUR ARGUMENT → CONSIDERERS AND OWNERS BOTH DIFFER FROM REJECTORS — BUT CONSIDERERS AREN'T NECESSARILY LIKE OWNERS IN ALL WAYS OR TO THE SAME DEGREE.</div>
+</div>
+</div>
+
+<!-- 2: THREE GROUPS -->
+<div class="section">
+<div class="section-inner">
+  <div class="section-label">// THE DATA //</div>
+  <div class="h2">CRYPTO ISN'T JUST "IN" OR "OUT"</div>
+  <p class="body">Across three independent, nationally representative samples of U.S. adults, we measured crypto adoption with a two-step question: do you own crypto? If not, would you consider it? Every respondent is classified into exactly one group.</p>
+
+  <hr class="rule" style="margin:20px 0">
+  <div class="g3">
+    <div class="col">
+      <div class="lbl r" style="margin-bottom:6px">// REJECTORS</div><hr class="rule r">
+      <p class="body" style="font-size:13px;margin-bottom:10px">Does not own and would not consider.</p>
+      <div class="lbl r" style="margin-bottom:5px;font-size:11px">SAMPLE RATES</div>
+      <div class="br"><div class="bt"><div class="bf" style="width:68%;background:#ff4444"></div></div><div class="bv">68%</div></div><div class="bl2 r" style="color:#ff4444">STUDY 1</div>
+      <div class="br"><div class="bt"><div class="bf" style="width:62%;background:#ff4444"></div></div><div class="bv">62%</div></div><div class="bl2 r" style="color:#ff4444">STUDY 2</div>
+      <div class="br"><div class="bt"><div class="bf" style="width:46%;background:#ff4444"></div></div><div class="bv">46%</div></div><div class="bl2 r" style="color:#ff4444">STUDY 3</div>
+    </div>
+    <div class="col">
+      <div class="lbl a" style="margin-bottom:6px">// CONSIDERERS</div><hr class="rule a">
+      <p class="body" style="font-size:13px;margin-bottom:10px">Does not own but would consider.</p>
+      <div class="lbl a" style="margin-bottom:5px;font-size:11px">SAMPLE RATES</div>
+      <div class="br"><div class="bt"><div class="bf" style="width:19%;background:#ffc400"></div></div><div class="bv">19%</div></div><div class="bl2 a" style="color:#ffc400">STUDY 1</div>
+      <div class="br"><div class="bt"><div class="bf" style="width:20%;background:#ffc400"></div></div><div class="bv">20%</div></div><div class="bl2 a" style="color:#ffc400">STUDY 2</div>
+      <div class="br"><div class="bt"><div class="bf" style="width:22%;background:#ffc400"></div></div><div class="bv">22%</div></div><div class="bl2 a" style="color:#ffc400">STUDY 3</div>
+    </div>
+    <div class="col">
+      <div class="lbl g" style="margin-bottom:6px">// OWNERS</div><hr class="rule g">
+      <p class="body" style="font-size:13px;margin-bottom:10px">Currently holds cryptocurrency.</p>
+      <div class="lbl g" style="margin-bottom:5px;font-size:11px">SAMPLE RATES</div>
+      <div class="br"><div class="bt"><div class="bf" style="width:13%;background:#00ff41"></div></div><div class="bv">13%</div></div><div class="bl2 g" style="color:#00ff41">STUDY 1</div>
+      <div class="br"><div class="bt"><div class="bf" style="width:18%;background:#00ff41"></div></div><div class="bv">18%</div></div><div class="bl2 g" style="color:#00ff41">STUDY 2</div>
+      <div class="br"><div class="bt"><div class="bf" style="width:32%;background:#00ff41"></div></div><div class="bv">32%</div></div><div class="bl2 g" style="color:#00ff41">STUDY 3</div>
+    </div>
+  </div>
+
+  <div class="explainer amber" style="margin-top:20px">
+    The <span class="a">considerer</span> share (~20%) is consistent across three studies run at different times with different survey providers. That consistency suggests this is a real, stable group — not sampling noise.
+  </div>
+
+  <div class="pullquote">
+    <div class="pq-text">~20% of U.S. adults <span class="a">would consider</span> owning crypto — but don't yet.</div>
+    <div class="pq-sub">Across all three of our nationally representative samples.</div>
+  </div>
+</div>
+</div>
+
+<!-- 3: TYPES -->
+<div class="section">
+<div class="section-inner">
+  <div class="section-label">// THE LANDSCAPE //</div>
+  <div class="h2">MOSTLY BITCOIN — BUT NOT EXCLUSIVELY</div>
+  <p class="body">We asked respondents to indicate which types of crypto they <span class="a">would consider</span> or <span class="g">owned</span>. Bitcoin dominated across the board, followed by Ethereum and others like Dogecoin and XRP. Most selected one type, though a meaningful share chose two or more.</p>
+
+  <div class="g2" style="margin:20px 0">
+    <div>
+      <div class="lbl a" style="margin-bottom:8px">// WOULD CONSIDER</div>
+      <div class="lbl a" style="margin-bottom:4px;font-size:12px">₿ BITCOIN</div>
+      <div class="br"><div class="bt"><div class="bf" style="width:93%;background:#ffc400"></div></div><div class="bv">93%</div></div><div class="bl2" style="color:#ffc400;margin-bottom:7px">STUDY 1 / 2 / 3 avg.</div>
+      <div class="lbl a" style="margin-bottom:4px;font-size:12px">Ξ ETHEREUM</div>
+      <div class="br"><div class="bt"><div class="bf" style="width:35%;background:#ffc400"></div></div><div class="bv">35%</div></div><div class="bl2" style="color:#ffc400;margin-bottom:7px">STUDY 1 / 2 / 3 avg.</div>
+      <div class="lbl a" style="margin-bottom:4px;font-size:12px">◈ OTHER</div>
+      <div class="br"><div class="bt"><div class="bf" style="width:6%;background:#ffc400"></div></div><div class="bv">6%</div></div><div class="bl2" style="color:#ffc400">STUDY 1 / 2 / 3 avg.</div>
+    </div>
+    <div>
+      <div class="lbl g" style="margin-bottom:8px">// OWNS</div>
+      <div class="lbl dr" style="margin-bottom:4px;font-size:12px">₿ BITCOIN</div>
+      <div class="br"><div class="bt"><div class="bf" style="width:78%;background:#00ff41"></div></div><div class="bv">78%</div></div><div class="bl2" style="margin-bottom:7px">STUDY 1 / 2 / 3 avg.</div>
+      <div class="lbl dr" style="margin-bottom:4px;font-size:12px">Ξ ETHEREUM</div>
+      <div class="br"><div class="bt"><div class="bf" style="width:40%;background:#00ff41"></div></div><div class="bv">40%</div></div><div class="bl2" style="margin-bottom:7px">STUDY 1 / 2 / 3 avg.</div>
+      <div class="lbl dr" style="margin-bottom:4px;font-size:12px">◈ OTHER</div>
+      <div class="br"><div class="bt"><div class="bf" style="width:16%;background:#00ff41"></div></div><div class="bv">16%</div></div><div class="bl2">STUDY 1 / 2 / 3 avg.</div>
+    </div>
+  </div>
+
+  <p class="body" style="font-size:13px;color:var(--dim)">Our sample rates closely mirror real-world market share data, lending external validity to our measures and results.</p>
+</div>
+</div>
+
+<!-- 4: METHODS -->
+<div class="section">
+<div class="section-inner">
+  <div class="section-label">// THE METHOD //</div>
+  <div class="h2">HOW WE TESTED IT</div>
+  <p class="body">We used a modeling approach that simultaneously estimates the probability of being a <span class="r">rejector</span>, <span class="a">considerer</span>, or <span class="g">owner</span>. We repeated this across three independent samples — different people, different timing, different survey providers — to ensure reliability.</p>
+
+  <div class="explainer">
+    <strong>THREE STUDIES:</strong><br>
+    Study 1 — Cooperative Election Study (Oct–Dec 2024, <em>n</em> = 803)<br>
+    Study 2 — Lucid (Feb–Mar 2025, <em>n</em> = 1,908)<br>
+    Study 3 — Verasight (June 2025, <em>n</em> = 2,086)
+  </div>
+
+  <p class="body" style="margin:16px 0 10px">We tested predictors across seven categories:</p>
+
+  <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px">
+    <div style="padding:9px 12px;border:1px solid var(--dmt)"><span style="font-weight:700">SOCIODEMOGRAPHICS</span> <span style="color:var(--dim);font-size:12px">— who respondents are</span><div class="pills"><span class="pill">AGE</span><span class="pill">SEX</span><span class="pill">RACE/ETHNICITY</span><span class="pill">EDUCATION</span><span class="pill">INCOME</span><span class="pill">RELIGIOSITY</span></div></div>
+    <div style="padding:9px 12px;border:1px solid var(--dmt)"><span style="font-weight:700">PERSONALITY</span> <span style="color:var(--dim);font-size:12px">— how one thinks, feels, and approaches the world</span><div class="pills"><span class="pill">OPENNESS</span><span class="pill">CONSCIENTIOUSNESS</span><span class="pill">EXTRAVERSION</span><span class="pill">AGREEABLENESS</span><span class="pill">NEUROTICISM</span><span class="pill">NEED FOR COGNITION</span></div></div>
+    <div style="padding:9px 12px;border:1px solid var(--dmt)"><span style="font-weight:700">POLITICAL ORIENTATION</span> <span style="color:var(--dim);font-size:12px">— policy preferences</span><div class="pills"><span class="pill">OPERATIONAL IDEOLOGY</span></div></div>
+    <div style="padding:9px 12px;border:1px solid var(--dmt)"><span style="font-weight:700">PERSONALITY ADAPTATIONS</span> <span style="color:var(--dim);font-size:12px">— orientation toward authority and social order</span><div class="pills"><span class="pill">NEED FOR CHAOS</span><span class="pill">AUTHORITARIANISM</span></div></div>
+    <div style="padding:9px 12px;border:1px solid var(--dmt)"><span style="font-weight:700">TRUST</span> <span style="color:var(--dim);font-size:12px">— confidence in institutions and others</span><div class="pills"><span class="pill">GOVERNMENT</span><span class="pill">PEOPLE</span><span class="pill">BANKS</span></div></div>
+    <div style="padding:9px 12px;border:1px solid var(--dmt)"><span style="font-weight:700">TECH OPTIMISM</span> <span style="color:var(--dim);font-size:12px">— attitudes toward emerging tech</span><div class="pills"><span class="pill">SUPPORT FOR DEVELOPING AI</span></div></div>
+    <div style="padding:9px 12px;border:1px solid var(--dmt)"><span style="font-weight:700">INVESTMENTS &amp; RISK</span> <span style="color:var(--dim);font-size:12px">— financial behavior and risk appetite</span><div class="pills"><span class="pill">STOCK OWNER</span><span class="pill">INVESTING RISK TOLERANCE</span></div></div>
+  </div>
+</div>
+</div>
+
+<!-- 5: MAIN FINDING -->
+<div class="section">
+<div class="section-inner">
+  <div class="section-label">// THE HEADLINE //</div>
+  <div class="finding-block">
+    <div class="f1">IN ALL THREE SAMPLES,<br><span class="a">CONSIDERERS</span> AND <span class="g">OWNERS</span> ≠ <span class="r">REJECTORS</span></div>
+    <hr class="rule" style="margin:16px 0">
+    <div class="f2">BUT <span class="a">CONSIDERERS</span> ≠ <span class="g">OWNERS</span></div>
+    <div class="f3">— not in all ways, or to the same degree</div>
+  </div>
+  <div class="explainer" style="margin-top:20px">
+    Compared to <span class="r">rejectors</span>, both <span class="a">considerers</span> and <span class="g">owners</span> skew younger, male, higher income, less religious, more open to experience, less conscientious, and more risk-tolerant. But some predictors separate the two adoption stages from each other — and those distinctions matter for understanding where adoption stalls.
+  </div>
+</div>
+</div>
+
+<!-- 6: FINDINGS I — SHARED FACTORS -->
+<div class="section">
+<div class="section-inner">
+  <div class="section-label">// FINDINGS I //</div>
+  <div class="h2">THE SHARED PROFILE</div>
+  <p class="body">These variables shift the probability of both <span class="a">considering</span> and <span class="g">owning</span> in the same direction — moving away from <span class="r">rejection</span> across the board. Each gauge shows the probability of each group after going from the minimum to maximum value of that variable, compared to the <strong>baseline</strong> (60% rejector / 20% considerer / 20% owner).</p>
+
+  <div class="transition">BASELINE: 60% REJECTOR · 20% CONSIDERER · 20% OWNER</div>
+
+  <!-- gauge helper macro — we inline each one -->
+
+  <!-- AGE (younger) r:36 a:32 g:32 -->
+  <div class="var-card">
+    <div class="var-title">↓ AGE</div>
+    <div class="var-desc">Younger age is associated with higher probability of <span class="a">considering</span> and <span class="g">owning</span>.</div>
+    <div class="gauge-grid">
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ff4444">REJECTOR</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,68,68,.07)">
+          <div class="gauge-fill" style="height:36%;background:rgba(255,68,68,.7)"></div>
+          <div class="gauge-baseline" style="bottom:60%"><span class="gauge-baseline-lbl">BASELINE</span></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ff4444">▼</div>
+        <div class="gauge-chg" style="color:#ff4444">LOWER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ffc400">CONSIDERER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,196,0,.07)">
+          <div class="gauge-fill" style="height:32%;background:rgba(255,196,0,.65)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ffc400">▲</div>
+        <div class="gauge-chg" style="color:#ffc400">HIGHER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#00ff41">OWNER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(0,255,65,.07)">
+          <div class="gauge-fill" style="height:32%;background:rgba(0,255,65,.6)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#00ff41">▲</div>
+        <div class="gauge-chg" style="color:#00ff41">HIGHER</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MALE r:52 a:24 g:24 — wait, baseline r=60, male r=52 so rejector goes DOWN, considerer/owner go UP -->
+  <!-- Actually: going from female→male: r drops from 60→52, a goes 20→24, g goes 20→24 -->
+  <div class="var-card">
+    <div class="var-title">↑ MALE</div>
+    <div class="var-desc">Male respondents have a higher probability of <span class="a">considering</span> and <span class="g">owning</span>.</div>
+    <div class="gauge-grid">
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ff4444">REJECTOR</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,68,68,.07)">
+          <div class="gauge-fill" style="height:52%;background:rgba(255,68,68,.7)"></div>
+          <div class="gauge-baseline" style="bottom:60%"><span class="gauge-baseline-lbl">BASELINE</span></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ff4444">▼</div>
+        <div class="gauge-chg" style="color:#ff4444">LOWER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ffc400">CONSIDERER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,196,0,.07)">
+          <div class="gauge-fill" style="height:24%;background:rgba(255,196,0,.65)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ffc400">▲</div>
+        <div class="gauge-chg" style="color:#ffc400">HIGHER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#00ff41">OWNER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(0,255,65,.07)">
+          <div class="gauge-fill" style="height:24%;background:rgba(0,255,65,.6)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#00ff41">▲</div>
+        <div class="gauge-chg" style="color:#00ff41">HIGHER</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INCOME r:48 a:26 g:26 -->
+  <div class="var-card">
+    <div class="var-title">↑ INCOME</div>
+    <div class="var-desc">Higher income is associated with higher probability of <span class="a">considering</span> and <span class="g">owning</span>.</div>
+    <div class="gauge-grid">
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ff4444">REJECTOR</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,68,68,.07)">
+          <div class="gauge-fill" style="height:48%;background:rgba(255,68,68,.7)"></div>
+          <div class="gauge-baseline" style="bottom:60%"><span class="gauge-baseline-lbl">BASELINE</span></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ff4444">▼</div>
+        <div class="gauge-chg" style="color:#ff4444">LOWER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ffc400">CONSIDERER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,196,0,.07)">
+          <div class="gauge-fill" style="height:26%;background:rgba(255,196,0,.65)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ffc400">▲</div>
+        <div class="gauge-chg" style="color:#ffc400">HIGHER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#00ff41">OWNER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(0,255,65,.07)">
+          <div class="gauge-fill" style="height:26%;background:rgba(0,255,65,.6)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#00ff41">▲</div>
+        <div class="gauge-chg" style="color:#00ff41">HIGHER</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RELIGIOSITY r:42 a:29 g:29 — wait, higher religiosity → MORE rejecting, so arrow logic: r goes UP, a/g go DOWN? No — "greater religiosity is associated with higher probability of considering and owning" — so r goes DOWN, a/g go UP -->
+  <div class="var-card">
+    <div class="var-title">↑ RELIGIOSITY</div>
+    <div class="var-desc">Greater religiosity is associated with higher probability of <span class="a">considering</span> and <span class="g">owning</span>.</div>
+    <div class="gauge-grid">
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ff4444">REJECTOR</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,68,68,.07)">
+          <div class="gauge-fill" style="height:42%;background:rgba(255,68,68,.7)"></div>
+          <div class="gauge-baseline" style="bottom:60%"><span class="gauge-baseline-lbl">BASELINE</span></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ff4444">▼</div>
+        <div class="gauge-chg" style="color:#ff4444">LOWER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ffc400">CONSIDERER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,196,0,.07)">
+          <div class="gauge-fill" style="height:29%;background:rgba(255,196,0,.65)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ffc400">▲</div>
+        <div class="gauge-chg" style="color:#ffc400">HIGHER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#00ff41">OWNER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(0,255,65,.07)">
+          <div class="gauge-fill" style="height:29%;background:rgba(0,255,65,.6)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#00ff41">▲</div>
+        <div class="gauge-chg" style="color:#00ff41">HIGHER</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPENNESS r:44 a:28 g:28 -->
+  <div class="var-card">
+    <div class="var-title">↑ OPENNESS TO EXPERIENCE</div>
+    <div class="var-desc">Greater openness to experience is associated with higher probability of <span class="a">considering</span> and <span class="g">owning</span>.</div>
+    <div class="gauge-grid">
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ff4444">REJECTOR</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,68,68,.07)">
+          <div class="gauge-fill" style="height:44%;background:rgba(255,68,68,.7)"></div>
+          <div class="gauge-baseline" style="bottom:60%"><span class="gauge-baseline-lbl">BASELINE</span></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ff4444">▼</div>
+        <div class="gauge-chg" style="color:#ff4444">LOWER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ffc400">CONSIDERER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,196,0,.07)">
+          <div class="gauge-fill" style="height:28%;background:rgba(255,196,0,.65)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ffc400">▲</div>
+        <div class="gauge-chg" style="color:#ffc400">HIGHER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#00ff41">OWNER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(0,255,65,.07)">
+          <div class="gauge-fill" style="height:28%;background:rgba(0,255,65,.6)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#00ff41">▲</div>
+        <div class="gauge-chg" style="color:#00ff41">HIGHER</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONSCIENTIOUSNESS r:42 a:29 g:29 — lower conscientiousness → more likely to consider/own -->
+  <div class="var-card">
+    <div class="var-title">↓ CONSCIENTIOUSNESS</div>
+    <div class="var-desc">Lower conscientiousness is associated with higher probability of <span class="a">considering</span> and <span class="g">owning</span>.</div>
+    <div class="gauge-grid">
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ff4444">REJECTOR</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,68,68,.07)">
+          <div class="gauge-fill" style="height:42%;background:rgba(255,68,68,.7)"></div>
+          <div class="gauge-baseline" style="bottom:60%"><span class="gauge-baseline-lbl">BASELINE</span></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ff4444">▼</div>
+        <div class="gauge-chg" style="color:#ff4444">LOWER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ffc400">CONSIDERER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,196,0,.07)">
+          <div class="gauge-fill" style="height:29%;background:rgba(255,196,0,.65)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ffc400">▲</div>
+        <div class="gauge-chg" style="color:#ffc400">HIGHER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#00ff41">OWNER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(0,255,65,.07)">
+          <div class="gauge-fill" style="height:29%;background:rgba(0,255,65,.6)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#00ff41">▲</div>
+        <div class="gauge-chg" style="color:#00ff41">HIGHER</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INVESTING RISK r:28 a:36 g:36 — largest effect -->
+  <div class="var-card">
+    <div class="var-title">↑ INVESTING RISK TOLERANCE</div>
+    <div class="var-desc">Greater investing risk tolerance has the largest effect — strongly increasing probability of <span class="a">considering</span> and <span class="g">owning</span>.</div>
+    <div class="gauge-grid">
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ff4444">REJECTOR</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,68,68,.07)">
+          <div class="gauge-fill" style="height:28%;background:rgba(255,68,68,.7)"></div>
+          <div class="gauge-baseline" style="bottom:60%"><span class="gauge-baseline-lbl">BASELINE</span></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ff4444">▼</div>
+        <div class="gauge-chg" style="color:#ff4444">LOWER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ffc400">CONSIDERER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,196,0,.07)">
+          <div class="gauge-fill" style="height:36%;background:rgba(255,196,0,.65)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ffc400">▲</div>
+        <div class="gauge-chg" style="color:#ffc400">HIGHER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#00ff41">OWNER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(0,255,65,.07)">
+          <div class="gauge-fill" style="height:36%;background:rgba(0,255,65,.6)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#00ff41">▲</div>
+        <div class="gauge-chg" style="color:#00ff41">HIGHER</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- 7: FINDINGS II — DIVERGING FACTORS -->
+<div class="section">
+<div class="section-inner">
+  <div class="section-label">// FINDINGS II //</div>
+  <div class="h2">WHERE CONSIDERERS AND OWNERS DIVERGE</div>
+  <p class="body">Some characteristics distinguish <span class="r">rejectors</span> from <span class="a">considerers</span> but not <span class="g">owners</span> — and vice versa. This is where the adoption stages come apart.</p>
+
+  <div class="transition">BASELINE: 60% REJECTOR · 20% CONSIDERER · 20% OWNER</div>
+
+  <!-- CONSERVATIVE IDEOLOGY r:45 a:35 g:20 -->
+  <div class="var-card">
+    <div class="var-title amber">↑ CONSERVATIVE IDEOLOGY</div>
+    <div class="var-desc">Increases probability of <span class="a">considering</span>, but not <span class="g">owning</span>.</div>
+    <div class="gauge-grid">
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ff4444">REJECTOR</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,68,68,.07)">
+          <div class="gauge-fill" style="height:45%;background:rgba(255,68,68,.7)"></div>
+          <div class="gauge-baseline" style="bottom:60%"><span class="gauge-baseline-lbl">BASELINE</span></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ff4444">▼</div>
+        <div class="gauge-chg" style="color:#ff4444">LOWER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ffc400">CONSIDERER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,196,0,.07)">
+          <div class="gauge-fill" style="height:35%;background:rgba(255,196,0,.65)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ffc400">▲</div>
+        <div class="gauge-chg" style="color:#ffc400">HIGHER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#00ff41">OWNER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(0,255,65,.07)">
+          <div class="gauge-fill" style="height:20%;background:rgba(0,255,65,.6)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="opacity:.35">—</div>
+        <div class="gauge-chg" style="opacity:.35">NO CHANGE</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEED FOR CHAOS r:60 a:9 g:31 -->
+  <div class="var-card">
+    <div class="var-title">↑ NEED FOR CHAOS</div>
+    <div class="var-desc">Increases probability of <span class="g">owning</span>, rather than <span class="a">considering</span>.</div>
+    <div class="gauge-grid">
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ff4444">REJECTOR</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,68,68,.07)">
+          <div class="gauge-fill" style="height:60%;background:rgba(255,68,68,.7)"></div>
+          <div class="gauge-baseline" style="bottom:60%"><span class="gauge-baseline-lbl">BASELINE</span></div>
+        </div>
+        <div class="gauge-arrow" style="opacity:.35">—</div>
+        <div class="gauge-chg" style="opacity:.35">NO CHANGE</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ffc400">CONSIDERER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,196,0,.07)">
+          <div class="gauge-fill" style="height:9%;background:rgba(255,196,0,.65)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ffc400">▼</div>
+        <div class="gauge-chg" style="color:#ffc400">LOWER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#00ff41">OWNER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(0,255,65,.07)">
+          <div class="gauge-fill" style="height:31%;background:rgba(0,255,65,.6)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#00ff41">▲</div>
+        <div class="gauge-chg" style="color:#00ff41">HIGHER</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUPPORTS AI r:48 a:32 g:20 -->
+  <div class="var-card">
+    <div class="var-title amber">↑ SUPPORTS DEVELOPING AI</div>
+    <div class="var-desc">Increases probability of <span class="a">considering</span>, but not <span class="g">owning</span>.</div>
+    <div class="gauge-grid">
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ff4444">REJECTOR</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,68,68,.07)">
+          <div class="gauge-fill" style="height:48%;background:rgba(255,68,68,.7)"></div>
+          <div class="gauge-baseline" style="bottom:60%"><span class="gauge-baseline-lbl">BASELINE</span></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ff4444">▼</div>
+        <div class="gauge-chg" style="color:#ff4444">LOWER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ffc400">CONSIDERER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,196,0,.07)">
+          <div class="gauge-fill" style="height:32%;background:rgba(255,196,0,.65)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ffc400">▲</div>
+        <div class="gauge-chg" style="color:#ffc400">HIGHER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#00ff41">OWNER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(0,255,65,.07)">
+          <div class="gauge-fill" style="height:20%;background:rgba(0,255,65,.6)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="opacity:.35">—</div>
+        <div class="gauge-chg" style="opacity:.35">NO CHANGE</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STOCK OWNER r:60 a:8 g:32 -->
+  <div class="var-card">
+    <div class="var-title">↑ STOCK OWNER</div>
+    <div class="var-desc">Increases probability of <span class="g">owning</span>, rather than <span class="a">considering</span>.</div>
+    <div class="gauge-grid">
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ff4444">REJECTOR</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,68,68,.07)">
+          <div class="gauge-fill" style="height:60%;background:rgba(255,68,68,.7)"></div>
+          <div class="gauge-baseline" style="bottom:60%"><span class="gauge-baseline-lbl">BASELINE</span></div>
+        </div>
+        <div class="gauge-arrow" style="opacity:.35">—</div>
+        <div class="gauge-chg" style="opacity:.35">NO CHANGE</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#ffc400">CONSIDERER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(255,196,0,.07)">
+          <div class="gauge-fill" style="height:8%;background:rgba(255,196,0,.65)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#ffc400">▼</div>
+        <div class="gauge-chg" style="color:#ffc400">LOWER</div>
+      </div>
+      <div class="gauge-col">
+        <div class="gauge-col-lbl" style="color:#00ff41">OWNER</div>
+        <div class="gauge-bar-wrap" style="background:rgba(0,255,65,.07)">
+          <div class="gauge-fill" style="height:32%;background:rgba(0,255,65,.6)"></div>
+          <div class="gauge-baseline" style="bottom:20%"></div>
+        </div>
+        <div class="gauge-arrow" style="color:#00ff41">▲</div>
+        <div class="gauge-chg" style="color:#00ff41">HIGHER</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="explainer">
+    <strong>Conservative ideology and support for AI development</strong> increase the probability of <span class="a">considering</span> without increasing ownership — they may signal openness to crypto without translating into action. Meanwhile, <strong>Need for Chaos and stock ownership</strong> specifically predict <span class="g">owning</span>: they're associated with actually taking the step.
+  </div>
+
+  <div class="pullquote">
+    <div class="pq-text">The <span class="a">considerer</span> is the most actionable audience — open to adoption, but hasn't acted yet.</div>
+    <div class="pq-sub">What moves someone from consideration to ownership is not the same as what moves them from rejection to consideration.</div>
+  </div>
+</div>
+</div>
+
+<!-- 8: IMPLICATIONS -->
+<div class="section">
+<div class="section-inner">
+  <div class="section-label">// SO WHAT? //</div>
+  <div class="h2">WHAT OUR FINDINGS MEAN FOR...</div>
+
+  <div class="impl-item">
+    <div class="impl-title amber">// FOR ADVOCATES, INDUSTRY, AND COMMUNICATORS</div>
+    <p class="impl-body">Understanding who considers — and what moves them from intentions to action — has direct implications for product design, onboarding, and communication strategies. Whether one's goal is to endorse or denounce crypto, the "considerer" is arguably the most actionable audience: potentially open to adoption, but hasn't taken action yet.<br><br>Our work suggests no single approach will appeal to all. Efforts to reduce uncertainty and promote legitimacy may attract considerers, but backfire with owners who think differently about institutional disruption and risk.</p>
+  </div>
+
+  <div class="impl-item">
+    <div class="impl-title">// FOR POLICYMAKERS</div>
+    <p class="impl-body">That roughly 20% of US adults would consider owning crypto suggests significant latent demand. Consideration may depend on pending regulation, perceived risk, and legitimacy signals, including endorsement from trusted elites. Policymakers will likely need to balance both mainstream and alternative frames.</p>
+  </div>
+
+  <div class="impl-item">
+    <div class="impl-title amber">// FOR RESEARCHERS</div>
+    <p class="impl-body">Looking only at ownership obscures variation among non-owners. By accounting for considerers, we find certain factors (e.g., ideology and tech attitudes) do matter for crypto adoption — just not for the ownership stage. Our approach also helps determine when other factors (e.g., Need for Chaos) matter in the process, providing direction for future research.</p>
+  </div>
+
+  <div class="impl-item">
+    <div class="impl-title">// FOR ADOPTION DIFFUSION</div>
+    <p class="impl-body">Considering and owning rates from all three studies suggest US crypto adoption is at or nearing the "early majority" stage. We don't yet know how the landscape will evolve, or whether the motivations of the next wave of adopters will look the same. Regardless, our findings align with decades of attitude-behavior research and should be broadly applicable.</p>
+  </div>
+
+  <div class="impl-item">
+    <div class="impl-title amber">// FOR BITCOINERS</div>
+    <p class="impl-body">Most respondents would consider or own Bitcoin, but a sizable share have multiple types and/or don't engage with Bitcoin at all. Limiting analysis to Bitcoin ignores part of the crypto-engaged population and makes it virtually impossible to disentangle asset-specific relationships.<br><br>We tested for, but did not find, asset-specific differences in our data. Our multi-study evidence suggests this is not currently the case — though it's possible such differences could emerge.</p>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+<div class="footer-inner">
+  <div class="h2" style="margin-bottom:16px">// READ THE PAPER //</div>
+  <table class="rt">
+    <tr><td>TO READ THE PAPER</td><td>
+      <a href="https://doi.org/10.1016/j.jretconser.2026.104759" target="_blank">JOURNAL OF RETAILING AND CONSUMER SERVICES ↗</a><br>
+      <a href="https://www.erinbfitz.com/crypto" target="_blank">UNGATED PDF ↗</a><br>
+      <a href="https://doi.org/10.31234/osf.io/yquzs_v1" target="_blank">PREPRINT ↗</a>
+    </td></tr>
+    <tr>
+      <td>TO CONTACT THE AUTHORS</td>
+      <td style="line-height:1.4">
+        ERIN FITZ &nbsp;<a href="https://erinbfitz.com" target="_blank">erinbfitz.com</a>&nbsp;<a href="mailto:erin.fitz@colostate.edu">✉</a>&nbsp;<a href="https://x.com/itserinfitz" target="_blank">𝕏</a>&nbsp;<a href="https://www.linkedin.com/in/erin-fitz-161b34308" target="_blank">in</a><br>KYLE SAUNDERS &nbsp;<a href="https://kylesaunders.com" target="_blank">kylesaunders.com</a>&nbsp;<a href="mailto:kyle.saunders@colostate.edu">✉</a>&nbsp;<a href="https://x.com/profgoose" target="_blank">𝕏</a>&nbsp;<a href="https://www.linkedin.com/in/kylesaunders/" target="_blank">in</a>
+      </td>
+    </tr>
+    <tr><td>LAST UPDATED</td><td>FEBRUARY 25, 2026</td></tr>
+  </table>
+</div>
+</div>
+
+<script>
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('scroll-progress').style.transform=`scaleX(${window.scrollY/h})`;
+});
+</script>
+</body>
+</html>
